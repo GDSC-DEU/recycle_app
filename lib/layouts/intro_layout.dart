@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class IntroLayout extends StatefulWidget {
   final double height;
   final String text;
+  final String bgImageAsset;
   final double? fontSize;
 
   const IntroLayout({
     super.key,
     required this.height,
     required this.text,
+    required this.bgImageAsset,
     this.fontSize,
   });
 
@@ -26,7 +28,7 @@ class _IntroLayoutState extends State<IntroLayout> {
             width: double.infinity,
             height: double.infinity,
             child: Image.asset(
-              "images/intro1.png",
+              widget.bgImageAsset,
               fit: BoxFit.cover,
             ),
           ),
