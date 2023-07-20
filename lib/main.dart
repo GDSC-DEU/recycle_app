@@ -12,8 +12,12 @@ class RecycleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: IntroLayout(),
+      home: SafeArea(
+        child: IntroLayout(
+          height: 200,
+          fontSize: 25,
+          text: "서울시에서 재활용을 위해 배출된 쓰레기의 절반 이상이 분류되지 못하고 버려진다고 합니다.",
+        ),
       ),
     );
   }
