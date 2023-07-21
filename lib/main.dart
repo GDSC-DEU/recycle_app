@@ -18,12 +18,12 @@ void main() async {
     FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
     await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
   }
-
+  
   runApp(const RecycleApp());
 }
 
 class RecycleApp extends StatelessWidget {
-  const RecycleApp({ super.key });
+  const RecycleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
