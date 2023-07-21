@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:recycle_app/layouts/intro_layout.dart';
+import 'package:recycle_app/components/sign_up_username_component.dart';
 
 class SlideHorizontalComponent extends StatefulWidget {
   const SlideHorizontalComponent({ super.key });
@@ -27,6 +29,8 @@ class _StateSlideHorizontalComponent extends State<SlideHorizontalComponent> {
           _index++;
           if (_index > _maxIndex) {
             _index = _maxIndex;
+
+            Get.to(const SignUpUsernameComponent());
           }
 
           _scrollController.animateTo(
