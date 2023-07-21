@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
 
 import 'package:recycle_app/components/contents_list_component.dart';
+import 'package:recycle_app/components/drawer_component.dart';
 
-class ContentsScreen extends StatelessWidget {
-  //int _selectedIndex = 0;
+class ContentsScreen extends StatefulWidget {
   final String text;
 
-  const ContentsScreen({
-    super.key,
-    required this.text
-  });
+  const ContentsScreen({Key? key, required this.text}) : super(key: key);
 
+  @override
+  _ContentsScreenState createState() => _ContentsScreenState();
+}
+
+class _ContentsScreenState extends State<ContentsScreen> {
+  int _selectedIndex = 0;
+  List<String> _titles = ['Home', 'Activite', 'Setting'];
+  List<Widget> _screens = [
+    Text('Home Screen'),
+    ContentsListComponent(),
+    Text('Setting Screen'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text(text),
+        title: Text(_titles[_selectedIndex]),
         centerTitle: true,
         elevation: 0,
         actions: const [
           IconButton(
-            icon: Icon(Icons.account_circle, color: Colors.black,),
-            onPressed: null, iconSize: 30
+              icon: Icon(Icons.account_circle, color: Colors.black,),
+              onPressed: null, iconSize: 30
           )
         ],
         titleTextStyle: const TextStyle(
@@ -31,118 +40,23 @@ class ContentsScreen extends StatelessWidget {
           fontSize: 22,
         ),
         backgroundColor: Colors.white,
-
       ),
       drawer: Drawer(
         backgroundColor: Color(0XffF7F2FA),
         child: ListView(
           padding: EdgeInsets.zero,
-
-          children: <Widget>[
+          children: const <Widget>[
             SizedBox(
               height: 50,
               child: DrawerHeader(
                 child: Text("Title"),
-
               ),
             ),
-            ListBody(
-              children: [
-                ListTile(
-                  title: Text("SectionHeader"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text("100+"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text("100+"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text("100+"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text("100+"),
-                ),
-                ListTile(
-                  title: Text("SectionHeader"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-                ListTile(
-                  title: Text("SectionHeader"),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 7 ,
-                    backgroundColor: Colors.black,
-                  ),
-                  title: Text("Label"),
-                  trailing: Text(""),
-                ),
-              ],
-            )
+            DrawerComponent(),
           ],
         ),
       ),
-      body: ContentsListComponent(),
+      body: _screens[_selectedIndex],
       backgroundColor: Colors.white,
       bottomNavigationBar: SizedBox(
         height: 80,
@@ -161,7 +75,13 @@ class ContentsScreen extends StatelessWidget {
                 label: 'Setting'
             ),
           ],
+          currentIndex: _selectedIndex,
           backgroundColor: Color(0xffF7F2FA),
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
         ),
       ),
     );
