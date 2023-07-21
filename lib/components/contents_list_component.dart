@@ -117,10 +117,10 @@ class _StateContentsListComponent extends State<ContentsListComponent> {
             width: 40,
             height: 40,
             margin: EdgeInsets.all(30),
-            decoration: const BoxDecoration(
-              color: Color(0xffEADDFF),
+            decoration: BoxDecoration(
+              color: Colors.purple.shade50,
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
                   spreadRadius: 1,

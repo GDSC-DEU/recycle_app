@@ -6,7 +6,10 @@ import 'package:recycle_app/components/drawer_component.dart';
 class ContentsScreen extends StatefulWidget {
   final String text;
 
-  const ContentsScreen({Key? key, required this.text}) : super(key: key);
+  const ContentsScreen({
+    super.key,
+    required this.text,
+  });
 
   @override
   _ContentsScreenState createState() => _ContentsScreenState();
@@ -42,7 +45,7 @@ class _ContentsScreenState extends State<ContentsScreen> {
         backgroundColor: Colors.white,
       ),
       drawer: Drawer(
-        backgroundColor: Color(0XffF7F2FA),
+        backgroundColor: Colors.purple.shade50,
         child: ListView(
           padding: EdgeInsets.zero,
           children: const <Widget>[
@@ -78,7 +81,7 @@ class _ContentsScreenState extends State<ContentsScreen> {
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
           currentIndex: _selectedIndex,
-          backgroundColor: Color(0xffF7F2FA),
+          backgroundColor: Colors.purple.shade50,
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
