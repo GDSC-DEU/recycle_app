@@ -75,6 +75,8 @@ class _ContentsScreenState extends State<ContentsScreen> {
                 label: 'Setting'
             ),
           ],
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
           currentIndex: _selectedIndex,
           backgroundColor: Color(0xffF7F2FA),
           onTap: (index) {
